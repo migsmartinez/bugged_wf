@@ -1,0 +1,9 @@
+---
+ref: bugged_wf
+name: bugged_wf
+description: Test wf that reproduces the unwanted paused state
+keywords:
+    - bug_test
+version: 0.1.0
+author: Miguel Martinez
+email: migs_martinez@outlook.com

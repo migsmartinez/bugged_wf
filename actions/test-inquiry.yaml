@@ -1,0 +1,7 @@
+---
+name: "test-inquiry"
+runner_type: "inquirer"
+description: "Initiates a test inquiry"
+enabled: true
+pack: "bugged_wf"
+

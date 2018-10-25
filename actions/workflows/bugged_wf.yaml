@@ -1,0 +1,44 @@
+version: '2.0'
+
+bugged_wf.bugged_wf:
+  description: testing wfs that go into paused state
+  type: direct
+  vars:
+    error_handled: False
+  tasks:
+    initial_task:
+      action: core.local
+      input:
+        cmd: echo "just an initial task to kick off wf"
+      on-success:
+        - awaiting_task
+    awaiting_task:
+      action: bugged_wf.test-inquiry 
+      input:
+        ttl: 5
+        schema:
+          type: object
+          properties:
+            p1:
+              type: boolean
+              description: "bogus description 1"
+              required: True
+            p2:
+              type: boolean
+              description: "fake description 2"
+              required: True
+            p3:
+              type: boolean
+              description: "not real description 3"
+              required: True 
+      on-error:
+        - time_limit_reached
+      on-success:
+        - succeed
+
+    time_limit_reached:
+      action: core.local
+      input:
+        cmd: echo "workflow time limit has been reached"
+      on-success:
+        - awaiting_task

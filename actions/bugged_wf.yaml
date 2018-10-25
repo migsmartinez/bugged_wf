@@ -1,0 +1,7 @@
+---
+description: testing wf that gets paused by itself 
+enabled: true
+runner_type: mistral-v2
+entry_point: workflows/bugged_wf.yaml
+name: bugged_wf
+pack: bugged_wf 
